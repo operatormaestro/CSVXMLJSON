@@ -1,6 +1,7 @@
 package org.example;
 
 
+import java.util.Objects;
 
 public class Employee {
     public long id;
@@ -23,5 +24,18 @@ public class Employee {
     @Override
     public String toString() {
         return "ID: " + id + ". First name: " + firstName + ". Last name: " + lastName + ". Country: " + country + ". Age: " + age;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, country, age);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && age == employee.age && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(country, employee.country);
     }
 }

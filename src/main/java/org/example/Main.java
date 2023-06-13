@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
         String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
         String fileName = "data.csv";
@@ -58,7 +59,7 @@ public class Main {
         Type listType = new TypeToken<List<Employee>>() {
         }.getType();
         GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.setPrettyPrinting().create();
+        Gson gson = builder.create();
         return gson.toJson(list, listType);
     }
 
@@ -138,4 +139,6 @@ public class Main {
         }
         return list;
     }
+
+
 }
